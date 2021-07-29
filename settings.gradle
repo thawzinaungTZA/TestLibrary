@@ -1,3 +1,5 @@
 rootProject.name = "TestLibrary"
 include ':app'
 include ':mylibrary'
+include ':secondlib'
+include ':secondlib'
