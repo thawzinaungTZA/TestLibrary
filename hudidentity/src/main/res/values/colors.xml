@@ -1,9 +1,0 @@
-<resources>
-    <color name="black">#FF000000</color>
-    <color name="white">#FFFFFFFF</color>
-    <color name="facebook_background">#3B5998</color>
-    <color name="google_background">#FFFFFF</color>
-    <color name="line_background">#00B900</color>
-    <color name="twitter_background">#00ACEE</color>
-    <color name="colorReloadText">#000000</color>
-</resources>
