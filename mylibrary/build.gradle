@@ -1,6 +1,7 @@
 plugins {
     id 'com.android.library'
     id 'kotlin-android'
+    id 'maven-publish'
 }
 
 android {
@@ -41,4 +42,53 @@ dependencies {
     testImplementation 'junit:junit:4.+'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+}
+
+def getVersionName = { ->
+    return "1.0.0" // Replace with version Name
+}
+
+def getArtificatId = { ->
+    return "mylibrary" // Replace with library name ID
+}
+
+def githubProperties = new Properties()
+githubProperties.load(new FileInputStream(rootProject.file("github.properties")))
+
+task sourceJar(type: Jar) {
+    from android.sourceSets.main.java.srcDirs
+    classifier "sources"
+}
+
+project.afterEvaluate {
+    publishing {
+        publications {
+            gpr(MavenPublication) {
+                groupId = "com.thawzinaung.libraries"
+                artifactId = getArtificatId()
+                version = getVersionName()
+                artifact("$buildDir/outputs/aar/${getArtificatId()}-release.aar")
+            }
+        }
+
+        repositories {
+            maven {
+                name = "GitHubPackages"
+                /** Configure path of your package repository on Github
+                 *  Replace GITHUB_USERID with your/organisation Github userID and REPOSITORY with the repository name on GitHub
+                 */
+                url = uri("https://maven.pkg.github.com/thawzinaungTZA/PrivateTestLibrary-")
+                credentials {
+                    /**Create github.properties in root project folder file with gpr.usr=GITHUB_USER_ID  & gpr.key=PERSONAL_ACCESS_TOKEN
+                     * OR
+                     * Set environment variables
+                     */
+                    username = githubProperties.get("gpr.user") ?: System.getenv("GPR_USER")
+                    password =
+                            githubProperties.get("gpr.password") ?: System.getenv("GPR_PASSWORD")
+
+                }
+            }
+        }
+    }
 }

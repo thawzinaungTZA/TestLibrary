@@ -15,13 +15,53 @@ buildscript {
     }
 }
 
+def githubProperties = new Properties()
+githubProperties.load(new FileInputStream(rootProject.file("github.properties")))
+
 allprojects {
     repositories {
         google()
         mavenCentral()
-        maven { url 'https://jitpack.io' }
+        //maven { url 'https://jitpack.io' }
+        maven {
+            name = "GitHubPackages"
+            /** Configure path of your package repository on Github
+             *  Replace GITHUB_USERID with your/organisation Github userID and REPOSITORY with the repository name on GitHub
+             */
+            url = uri("https://maven.pkg.github.com/thawzinaungTZA/PrivateTestLibrary-")
+            credentials {
+                /**Create github.properties in root project folder file with gpr.usr=GITHUB_USER_ID  & gpr.key=PERSONAL_ACCESS_TOKEN
+                 * OR
+                 * Set environment variables
+                 */
+                username = githubProperties.get("gpr.user") ?: System.getenv("GPR_USER")
+                password =
+                        githubProperties.get("gpr.password") ?: System.getenv("GPR_PASSWORD")
+
+            }
+        }
     }
 }
+
+/*repositories {
+    maven {
+        name = "GitHubPackages"
+        *//** Configure path of your package repository on Github
+         *  Replace GITHUB_USERID with your/organisation Github userID and REPOSITORY with the repository name on GitHub
+         *//*
+        url = uri("https://maven.pkg.github.com/thawzinaungTZA/PrivateTestLibrary-")
+        credentials {
+            *//**Create github.properties in root project folder file with gpr.usr=GITHUB_USER_ID  & gpr.key=PERSONAL_ACCESS_TOKEN
+             * OR
+             * Set environment variables
+             *//*
+            username = githubProperties.get("gpr.user") ?: System.getenv("GPR_USER")
+            password =
+                    githubProperties.get("gpr.password") ?: System.getenv("GPR_PASSWORD")
+
+        }
+    }
+}*/
 
 task clean(type: Delete) {
     delete rootProject.buildDir

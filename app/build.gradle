@@ -52,5 +52,9 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
 
-    implementation project(':secondlib')
+    //implementation project(':secondlib')
+    implementation "com.thawzinaung.libraries:mylibrary:1.0.0"
+    localImplementation "com.thawzinaung.libraries:test-lib:1.1.1:local@aar"
+    stagingImplementation "com.thawzinaung.libraries:test-lib:1.1.1:staging@aar"
+    productionImplementation "com.thawzinaung.libraries:test-lib:1.1.1:production@aar"
 }
