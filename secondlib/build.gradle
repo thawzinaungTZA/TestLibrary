@@ -65,8 +65,8 @@ def getArtificatId = { ->
     return "test-lib" // Replace with library name ID
 }
 
-def localProperties = new Properties()
-localProperties.load(new FileInputStream(rootProject.file("local.properties")))
+//def localProperties = new Properties()
+//localProperties.load(new FileInputStream(rootProject.file("local.properties")))
 
 task sourceJar(type: Jar) {
     from android.sourceSets.main.java.srcDirs
@@ -118,8 +118,8 @@ project.afterEvaluate {
  * Set environment variables*/
 
 
-                    username = localProperties.get("gpr.user") ?: System.getenv("GPR_USER")
-                    password = localProperties.get("gpr.pat") ?: System.getenv("GPR_PAT")
+                    username = System.getenv("GPR_USER")
+                    password = System.getenv("GPR_PAT")
 
                 }
             }
