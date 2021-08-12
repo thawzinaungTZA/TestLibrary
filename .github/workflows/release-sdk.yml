@@ -30,6 +30,9 @@ jobs:
 
       - name: Build Release
         run: ./gradlew assembleRelease
+        env:
+          GPR_USER: ${{ secrets.GPR_USER_ID }}
+          GPR_PAT: ${{ secrets.GPR_PERSONAL_ACCESS_TOKEN }}
 
       - name: Publish packages
         run: ./gradlew publish
