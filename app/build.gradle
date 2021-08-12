@@ -53,8 +53,8 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
 
     //implementation project(':secondlib')
-    debugImplementation "com.thawzinaung.libraries:mylibrary:1.0.5:debug@aar"
-    releaseImplementation "com.thawzinaung.libraries:mylibrary:1.0.5:release@aar"
+    debugImplementation "com.thawzinaung.libraries:mylibrary:v2.0.1:debug@aar"
+    releaseImplementation "com.thawzinaung.libraries:mylibrary:v2.0.1:release@aar"
 
     localImplementation "com.thawzinaung.libraries:test-lib:1.2.1:local@aar"
     stagingImplementation "com.thawzinaung.libraries:test-lib:1.2.1:staging@aar"

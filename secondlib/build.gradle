@@ -77,8 +77,8 @@ project.afterEvaluate {
                 artifactId = getArtificatId()
                 version = System.getenv("VERSION_NAME")
                 android.productFlavors.all { flavor ->
-                    artifact("$buildDir/outputs/aar/secondlib-${flavor}-release.aar") {
-                        classifier "${flavor}"
+                    artifact("$buildDir/outputs/aar/secondlib-${flavor.name}-release.aar") {
+                        classifier "${flavor.name}"
                         extension 'aar'
                     }
                 }
