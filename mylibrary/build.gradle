@@ -45,15 +45,15 @@ dependencies {
 }
 
 def getVersionName = { ->
-    return "1.0.0" // Replace with version Name
+    return "1.0.1" // Replace with version Name
 }
 
 def getArtificatId = { ->
     return "mylibrary" // Replace with library name ID
 }
 
-def githubProperties = new Properties()
-githubProperties.load(new FileInputStream(rootProject.file("github.properties")))
+def localProperties = new Properties()
+localProperties.load(new FileInputStream(rootProject.file("local.properties")))
 
 task sourceJar(type: Jar) {
     from android.sourceSets.main.java.srcDirs
@@ -83,9 +83,9 @@ project.afterEvaluate {
                      * OR
                      * Set environment variables
                      */
-                    username = githubProperties.get("gpr.user") ?: System.getenv("GPR_USER")
+                    username = localProperties.get("gpr.user") ?: System.getenv("GPR_USER")
                     password =
-                            githubProperties.get("gpr.password") ?: System.getenv("GPR_PASSWORD")
+                            localProperties.get("gpr.pat") ?: System.getenv("GPR_PAT")
 
                 }
             }

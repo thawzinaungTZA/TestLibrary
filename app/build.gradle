@@ -54,7 +54,7 @@ dependencies {
 
     //implementation project(':secondlib')
     implementation "com.thawzinaung.libraries:mylibrary:1.0.0"
-    localImplementation "com.thawzinaung.libraries:test-lib:1.1.1:local@aar"
-    stagingImplementation "com.thawzinaung.libraries:test-lib:1.1.1:staging@aar"
-    productionImplementation "com.thawzinaung.libraries:test-lib:1.1.1:production@aar"
+    localImplementation "com.thawzinaung.libraries:test-lib:1.2.0:local@aar"
+    stagingImplementation "com.thawzinaung.libraries:test-lib:1.2.0:staging@aar"
+    productionImplementation "com.thawzinaung.libraries:test-lib:1.2.0:production@aar"
 }

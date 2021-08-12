@@ -2,6 +2,7 @@ package com.example.testlibrary
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.example.mylibrary.ToastMessage
 import com.example.secondlib.ToastMessageSecond
 
 class MainActivity : AppCompatActivity() {
