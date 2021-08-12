@@ -33,8 +33,8 @@ allprojects {
                  * OR
                  * Set environment variables
                  */
-                username = System.getenv("GPR_USER")
-                password = System.getenv("GPR_PAT")
+                username = "thawzinaungTZA"//System.getenv("GPR_USER")
+                password = "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"//System.getenv("GPR_PAT")
 
             }
         }

@@ -57,10 +57,6 @@ dependencies {
     implementation "io.reactivex.rxjava2:rxandroid:2.1.0"
 }
 
-def getVersionName = { ->
-    return "1.2.1" // Replace with version Name
-}
-
 def getArtificatId = { ->
     return "test-lib" // Replace with library name ID
 }
@@ -79,8 +75,14 @@ project.afterEvaluate {
             maven(MavenPublication) {
                 groupId = "com.thawzinaung.libraries"
                 artifactId = getArtificatId()
-                version = getVersionName()
-                artifact("$buildDir/outputs/aar/secondlib-local-release.aar") {
+                version = System.getenv("VERSION_NAME")
+                android.productFlavors.all { flavor ->
+                    artifact("$buildDir/outputs/aar/secondlib-${flavor}-release.aar") {
+                        classifier "${flavor}"
+                        extension 'aar'
+                    }
+                }
+                /*artifact("$buildDir/outputs/aar/secondlib-local-release.aar") {
                     classifier 'local'
                     extension 'aar'
                 }
@@ -91,7 +93,7 @@ project.afterEvaluate {
                 artifact("$buildDir/outputs/aar/secondlib-production-release.aar") {
                     classifier 'production'
                     extension 'aar'
-                }
+                }*/
                 pom.withXml {
                     def dependenciesNode = asNode().appendNode('dependencies')
                     configurations.implementation.allDependencies.each {
